@@ -6,11 +6,7 @@ import org.intitis.scanner.Parser
 fun main() {
     // Beispielausdrücke
     val examples = listOf(
-        "sin(x)",
-        "cos(x^2)",
-        "tan(x) + 3*x",
-        "2*sin(x) + cos(x)",
-        "(x + 1)*tan(x)"
+        "sin(x)/cos(x)"
     )
 
     for (input in examples) {
