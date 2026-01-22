@@ -3,6 +3,7 @@ package scanner
 import org.intitis.scanner.Lexer
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class LexerTest {
 
@@ -22,5 +23,13 @@ class LexerTest {
     fun testFunction() {
         val result = Lexer("2*sin(x)").tokenize()
         assertEquals(result.size,6)
+    }
+
+    @Test
+    fun testError() {
+        assertThrows<IllegalStateException> {
+            Lexer("}}").tokenize()
+        }
+
     }
 }
