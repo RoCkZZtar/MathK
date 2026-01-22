@@ -22,7 +22,7 @@ class LexerTest {
     @Test
     fun testFunction() {
         val result = Lexer("2*sin(x)").tokenize()
-        assertEquals(result.size,5)
+        assertEquals(result.size,6)
     }
 
     @Test
