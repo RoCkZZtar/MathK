@@ -1,4 +1,4 @@
-package scanner
+package mathscanner
 
 import org.intitis.scanner.Lexer
 import org.junit.jupiter.api.Assertions.*

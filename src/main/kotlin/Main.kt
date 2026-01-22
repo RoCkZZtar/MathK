@@ -1,35 +1,17 @@
 package org.intitis
 
-import org.intitis.scanner.Lexer
-import org.intitis.scanner.Parser
+import org.intitis.scriptscanner.SInterpreter
+import org.intitis.scriptscanner.SLexer
+import org.intitis.scriptscanner.SParser
 
 fun main() {
-    // Beispielausdrücke
-    val examples = listOf(
-        "sin(x)/cos(x)"
-    )
+    val script = """
+        var b = "x^2"
+        print b
+    """.trimIndent()
 
-    for (input in examples) {
-        println("Input: $input")
-
-        try {
-            // Tokenisieren
-            val tokens = Lexer(input).tokenize()
-
-            // Parser → AST
-            val ast = Parser(tokens).parse()
-
-            // Ausgabe original
-            println("AST: $ast")
-
-            // Ableitung + vereinfachen
-            val derivative = ast.derive().simplify()
-            println("Ableitung: $derivative")
-        } catch (e: Exception) {
-            println("Fehler beim Parsen: ${e.message}")
-        }
-
-        println("------------------------------------------------")
-    }
+    val tokens = SLexer(script).tokenize()
+    val ast = SParser(tokens).parse()
+    SInterpreter().execute(ast)
 }
 
